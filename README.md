@@ -4,7 +4,7 @@ Go Redis 客户端封装库，基于 [go-redis/v9](https://github.com/redis/go-r
 
 ## 版本信息
 
-版本号格式: `v<Go版本>.<go-redis大版本>.<本项目迭代版本>`
+版本号格式: `v0.<Go版本>.<go-redis大版本>-<本项目迭代版本>`
 
 | 项目 | 版本                  | 说明                      |
 |------|---------------------|-------------------------|
@@ -21,8 +21,8 @@ Go Redis 客户端封装库，基于 [go-redis/v9](https://github.com/redis/go-r
 
 ## 安装
 
-```bash
-go get github.com/SilentQianyi/RedisClient
+```bash980-=`978
+go get github.com/SilentQianyi/redisClient@v0.19.9-0
 ```
 
 ## 快速开始
