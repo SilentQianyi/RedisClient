@@ -7,7 +7,7 @@ import (
 )
 
 // XAdd 向流中添加消息
-func (r *RedisClient) XAdd(ctx context.Context, a *redis.XAddArgs) *redis.StringCmd {
+func (r *RedisClient) XAdd(ctx context.Context, a *XAddArgs) *redis.StringCmd {
 	if r.client != nil {
 		return r.client.XAdd(ctx, a)
 	}
@@ -63,7 +63,7 @@ func (r *RedisClient) XRevRangeN(ctx context.Context, stream, start, stop string
 }
 
 // XRead 读取流消息
-func (r *RedisClient) XRead(ctx context.Context, a *redis.XReadArgs) *redis.XStreamSliceCmd {
+func (r *RedisClient) XRead(ctx context.Context, a *XReadArgs) *redis.XStreamSliceCmd {
 	if r.client != nil {
 		return r.client.XRead(ctx, a)
 	}
@@ -127,7 +127,7 @@ func (r *RedisClient) XGroupDelConsumer(ctx context.Context, stream, group, cons
 }
 
 // XReadGroup 消费者组读取消息
-func (r *RedisClient) XReadGroup(ctx context.Context, a *redis.XReadGroupArgs) *redis.XStreamSliceCmd {
+func (r *RedisClient) XReadGroup(ctx context.Context, a *XReadGroupArgs) *redis.XStreamSliceCmd {
 	if r.client != nil {
 		return r.client.XReadGroup(ctx, a)
 	}
@@ -143,7 +143,7 @@ func (r *RedisClient) XAck(ctx context.Context, stream, group string, ids ...str
 }
 
 // XClaim 认领消息
-func (r *RedisClient) XClaim(ctx context.Context, a *redis.XClaimArgs) *redis.XMessageSliceCmd {
+func (r *RedisClient) XClaim(ctx context.Context, a *XClaimArgs) *redis.XMessageSliceCmd {
 	if r.client != nil {
 		return r.client.XClaim(ctx, a)
 	}
@@ -151,7 +151,7 @@ func (r *RedisClient) XClaim(ctx context.Context, a *redis.XClaimArgs) *redis.XM
 }
 
 // XClaimJustID 认领消息（仅返回 ID）
-func (r *RedisClient) XClaimJustID(ctx context.Context, a *redis.XClaimArgs) *redis.StringSliceCmd {
+func (r *RedisClient) XClaimJustID(ctx context.Context, a *XClaimArgs) *redis.StringSliceCmd {
 	if r.client != nil {
 		return r.client.XClaimJustID(ctx, a)
 	}
@@ -159,7 +159,7 @@ func (r *RedisClient) XClaimJustID(ctx context.Context, a *redis.XClaimArgs) *re
 }
 
 // XAutoClaim 自动认领消息
-func (r *RedisClient) XAutoClaim(ctx context.Context, a *redis.XAutoClaimArgs) *redis.XAutoClaimCmd {
+func (r *RedisClient) XAutoClaim(ctx context.Context, a *XAutoClaimArgs) *redis.XAutoClaimCmd {
 	if r.client != nil {
 		return r.client.XAutoClaim(ctx, a)
 	}
@@ -167,7 +167,7 @@ func (r *RedisClient) XAutoClaim(ctx context.Context, a *redis.XAutoClaimArgs) *
 }
 
 // XAutoClaimJustID 自动认领消息（仅返回 ID）
-func (r *RedisClient) XAutoClaimJustID(ctx context.Context, a *redis.XAutoClaimArgs) *redis.XAutoClaimJustIDCmd {
+func (r *RedisClient) XAutoClaimJustID(ctx context.Context, a *XAutoClaimArgs) *redis.XAutoClaimJustIDCmd {
 	if r.client != nil {
 		return r.client.XAutoClaimJustID(ctx, a)
 	}
@@ -183,7 +183,7 @@ func (r *RedisClient) XPending(ctx context.Context, stream, group string) *redis
 }
 
 // XPendingExt 查询待处理消息（扩展）
-func (r *RedisClient) XPendingExt(ctx context.Context, a *redis.XPendingExtArgs) *redis.XPendingExtCmd {
+func (r *RedisClient) XPendingExt(ctx context.Context, a *XPendingExtArgs) *redis.XPendingExtCmd {
 	if r.client != nil {
 		return r.client.XPendingExt(ctx, a)
 	}

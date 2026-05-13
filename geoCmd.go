@@ -7,7 +7,7 @@ import (
 )
 
 // GeoAdd 添加地理位置
-func (r *RedisClient) GeoAdd(ctx context.Context, key string, geoLocation ...*redis.GeoLocation) *redis.IntCmd {
+func (r *RedisClient) GeoAdd(ctx context.Context, key string, geoLocation ...*GeoLocation) *redis.IntCmd {
 	if r.client != nil {
 		return r.client.GeoAdd(ctx, key, geoLocation...)
 	}
@@ -23,7 +23,7 @@ func (r *RedisClient) GeoPos(ctx context.Context, key string, members ...string)
 }
 
 // GeoRadius 按半径查询地理位置
-func (r *RedisClient) GeoRadius(ctx context.Context, key string, longitude, latitude float64, query *redis.GeoRadiusQuery) *redis.GeoLocationCmd {
+func (r *RedisClient) GeoRadius(ctx context.Context, key string, longitude, latitude float64, query *GeoRadiusQuery) *redis.GeoLocationCmd {
 	if r.client != nil {
 		return r.client.GeoRadius(ctx, key, longitude, latitude, query)
 	}
@@ -31,7 +31,7 @@ func (r *RedisClient) GeoRadius(ctx context.Context, key string, longitude, lati
 }
 
 // GeoRadiusStore 按半径查询并存储结果
-func (r *RedisClient) GeoRadiusStore(ctx context.Context, key string, longitude, latitude float64, query *redis.GeoRadiusQuery) *redis.IntCmd {
+func (r *RedisClient) GeoRadiusStore(ctx context.Context, key string, longitude, latitude float64, query *GeoRadiusQuery) *redis.IntCmd {
 	if r.client != nil {
 		return r.client.GeoRadiusStore(ctx, key, longitude, latitude, query)
 	}
@@ -39,7 +39,7 @@ func (r *RedisClient) GeoRadiusStore(ctx context.Context, key string, longitude,
 }
 
 // GeoRadiusByMember 按成员半径查询地理位置
-func (r *RedisClient) GeoRadiusByMember(ctx context.Context, key, member string, query *redis.GeoRadiusQuery) *redis.GeoLocationCmd {
+func (r *RedisClient) GeoRadiusByMember(ctx context.Context, key, member string, query *GeoRadiusQuery) *redis.GeoLocationCmd {
 	if r.client != nil {
 		return r.client.GeoRadiusByMember(ctx, key, member, query)
 	}
@@ -47,7 +47,7 @@ func (r *RedisClient) GeoRadiusByMember(ctx context.Context, key, member string,
 }
 
 // GeoRadiusByMemberStore 按成员半径查询并存储结果
-func (r *RedisClient) GeoRadiusByMemberStore(ctx context.Context, key, member string, query *redis.GeoRadiusQuery) *redis.IntCmd {
+func (r *RedisClient) GeoRadiusByMemberStore(ctx context.Context, key, member string, query *GeoRadiusQuery) *redis.IntCmd {
 	if r.client != nil {
 		return r.client.GeoRadiusByMemberStore(ctx, key, member, query)
 	}
@@ -55,7 +55,7 @@ func (r *RedisClient) GeoRadiusByMemberStore(ctx context.Context, key, member st
 }
 
 // GeoSearch 搜索地理位置
-func (r *RedisClient) GeoSearch(ctx context.Context, key string, q *redis.GeoSearchQuery) *redis.StringSliceCmd {
+func (r *RedisClient) GeoSearch(ctx context.Context, key string, q *GeoSearchQuery) *redis.StringSliceCmd {
 	if r.client != nil {
 		return r.client.GeoSearch(ctx, key, q)
 	}
@@ -63,7 +63,7 @@ func (r *RedisClient) GeoSearch(ctx context.Context, key string, q *redis.GeoSea
 }
 
 // GeoSearchLocation 搜索地理位置（含坐标）
-func (r *RedisClient) GeoSearchLocation(ctx context.Context, key string, q *redis.GeoSearchLocationQuery) *redis.GeoSearchLocationCmd {
+func (r *RedisClient) GeoSearchLocation(ctx context.Context, key string, q *GeoSearchLocationQuery) *redis.GeoSearchLocationCmd {
 	if r.client != nil {
 		return r.client.GeoSearchLocation(ctx, key, q)
 	}
@@ -71,7 +71,7 @@ func (r *RedisClient) GeoSearchLocation(ctx context.Context, key string, q *redi
 }
 
 // GeoSearchStore 搜索地理位置并存储
-func (r *RedisClient) GeoSearchStore(ctx context.Context, key, store string, q *redis.GeoSearchStoreQuery) *redis.IntCmd {
+func (r *RedisClient) GeoSearchStore(ctx context.Context, key, store string, q *GeoSearchStoreQuery) *redis.IntCmd {
 	if r.client != nil {
 		return r.client.GeoSearchStore(ctx, key, store, q)
 	}

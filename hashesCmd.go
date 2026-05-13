@@ -168,7 +168,7 @@ func (r *RedisClient) HScanNoValues(ctx context.Context, key string, cursor uint
 }
 
 // HExpireWithArgs 设置哈希字段过期（带参数）
-func (r *RedisClient) HExpireWithArgs(ctx context.Context, key string, expiration time.Duration, expirationArgs redis.HExpireArgs, fields ...string) *redis.IntSliceCmd {
+func (r *RedisClient) HExpireWithArgs(ctx context.Context, key string, expiration time.Duration, expirationArgs HExpireArgs, fields ...string) *redis.IntSliceCmd {
 	if r.client != nil {
 		return r.client.HExpireWithArgs(ctx, key, expiration, expirationArgs, fields...)
 	}
@@ -184,7 +184,7 @@ func (r *RedisClient) HPExpire(ctx context.Context, key string, expiration time.
 }
 
 // HPExpireWithArgs 以毫秒设置哈希字段过期（带参数）
-func (r *RedisClient) HPExpireWithArgs(ctx context.Context, key string, expiration time.Duration, expirationArgs redis.HExpireArgs, fields ...string) *redis.IntSliceCmd {
+func (r *RedisClient) HPExpireWithArgs(ctx context.Context, key string, expiration time.Duration, expirationArgs HExpireArgs, fields ...string) *redis.IntSliceCmd {
 	if r.client != nil {
 		return r.client.HPExpireWithArgs(ctx, key, expiration, expirationArgs, fields...)
 	}
@@ -200,7 +200,7 @@ func (r *RedisClient) HExpireAt(ctx context.Context, key string, tm time.Time, f
 }
 
 // HExpireAtWithArgs 设置哈希字段过期时间点（带参数）
-func (r *RedisClient) HExpireAtWithArgs(ctx context.Context, key string, tm time.Time, expirationArgs redis.HExpireArgs, fields ...string) *redis.IntSliceCmd {
+func (r *RedisClient) HExpireAtWithArgs(ctx context.Context, key string, tm time.Time, expirationArgs HExpireArgs, fields ...string) *redis.IntSliceCmd {
 	if r.client != nil {
 		return r.client.HExpireAtWithArgs(ctx, key, tm, expirationArgs, fields...)
 	}
@@ -216,7 +216,7 @@ func (r *RedisClient) HPExpireAt(ctx context.Context, key string, tm time.Time, 
 }
 
 // HPExpireAtWithArgs 以毫秒时间戳设置哈希字段过期时间点（带参数）
-func (r *RedisClient) HPExpireAtWithArgs(ctx context.Context, key string, tm time.Time, expirationArgs redis.HExpireArgs, fields ...string) *redis.IntSliceCmd {
+func (r *RedisClient) HPExpireAtWithArgs(ctx context.Context, key string, tm time.Time, expirationArgs HExpireArgs, fields ...string) *redis.IntSliceCmd {
 	if r.client != nil {
 		return r.client.HPExpireAtWithArgs(ctx, key, tm, expirationArgs, fields...)
 	}

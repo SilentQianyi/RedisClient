@@ -204,7 +204,7 @@ func (r *RedisClient) Touch(ctx context.Context, keys ...string) *redis.IntCmd {
 }
 
 // Sort 排序列表/集合/有序集合元素
-func (r *RedisClient) Sort(ctx context.Context, key string, sort *redis.Sort) *redis.StringSliceCmd {
+func (r *RedisClient) Sort(ctx context.Context, key string, sort *Sort) *redis.StringSliceCmd {
 	if r.client != nil {
 		return r.client.Sort(ctx, key, sort)
 	}
@@ -212,7 +212,7 @@ func (r *RedisClient) Sort(ctx context.Context, key string, sort *redis.Sort) *r
 }
 
 // SortStore 排序并存储结果
-func (r *RedisClient) SortStore(ctx context.Context, key, store string, sort *redis.Sort) *redis.IntCmd {
+func (r *RedisClient) SortStore(ctx context.Context, key, store string, sort *Sort) *redis.IntCmd {
 	if r.client != nil {
 		return r.client.SortStore(ctx, key, store, sort)
 	}
@@ -220,7 +220,7 @@ func (r *RedisClient) SortStore(ctx context.Context, key, store string, sort *re
 }
 
 // SortInterfaces 排序并返回 interface 切片
-func (r *RedisClient) SortInterfaces(ctx context.Context, key string, sort *redis.Sort) *redis.SliceCmd {
+func (r *RedisClient) SortInterfaces(ctx context.Context, key string, sort *Sort) *redis.SliceCmd {
 	if r.client != nil {
 		return r.client.SortInterfaces(ctx, key, sort)
 	}
@@ -228,7 +228,7 @@ func (r *RedisClient) SortInterfaces(ctx context.Context, key string, sort *redi
 }
 
 // SortRO 只读排序
-func (r *RedisClient) SortRO(ctx context.Context, key string, sort *redis.Sort) *redis.StringSliceCmd {
+func (r *RedisClient) SortRO(ctx context.Context, key string, sort *Sort) *redis.StringSliceCmd {
 	if r.client != nil {
 		return r.client.SortRO(ctx, key, sort)
 	}

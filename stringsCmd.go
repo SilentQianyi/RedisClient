@@ -16,7 +16,7 @@ func (r *RedisClient) Set(ctx context.Context, key string, value interface{}, ex
 }
 
 // SetArgs 设置键值（带额外参数）
-func (r *RedisClient) SetArgs(ctx context.Context, key string, value interface{}, a redis.SetArgs) *redis.StatusCmd {
+func (r *RedisClient) SetArgs(ctx context.Context, key string, value interface{}, a SetArgs) *redis.StatusCmd {
 	if r.client != nil {
 		return r.client.SetArgs(ctx, key, value, a)
 	}
@@ -176,7 +176,7 @@ func (r *RedisClient) MGet(ctx context.Context, keys ...string) *redis.SliceCmd 
 }
 
 // LCS 最长公共子序列
-func (r *RedisClient) LCS(ctx context.Context, q *redis.LCSQuery) *redis.LCSCmd {
+func (r *RedisClient) LCS(ctx context.Context, q *LCSQuery) *redis.LCSCmd {
 	if r.client != nil {
 		return r.client.LCS(ctx, q)
 	}

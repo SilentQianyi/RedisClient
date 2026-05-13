@@ -8,7 +8,7 @@ import (
 )
 
 // ZAdd 向有序集合添加成员
-func (r *RedisClient) ZAdd(ctx context.Context, key string, members ...redis.Z) *redis.IntCmd {
+func (r *RedisClient) ZAdd(ctx context.Context, key string, members ...Z) *redis.IntCmd {
 	if r.client != nil {
 		return r.client.ZAdd(ctx, key, members...)
 	}
@@ -16,7 +16,7 @@ func (r *RedisClient) ZAdd(ctx context.Context, key string, members ...redis.Z) 
 }
 
 // ZAddLT 仅当新分数小于当前分数时更新
-func (r *RedisClient) ZAddLT(ctx context.Context, key string, members ...redis.Z) *redis.IntCmd {
+func (r *RedisClient) ZAddLT(ctx context.Context, key string, members ...Z) *redis.IntCmd {
 	if r.client != nil {
 		return r.client.ZAddLT(ctx, key, members...)
 	}
@@ -24,7 +24,7 @@ func (r *RedisClient) ZAddLT(ctx context.Context, key string, members ...redis.Z
 }
 
 // ZAddGT 仅当新分数大于当前分数时更新
-func (r *RedisClient) ZAddGT(ctx context.Context, key string, members ...redis.Z) *redis.IntCmd {
+func (r *RedisClient) ZAddGT(ctx context.Context, key string, members ...Z) *redis.IntCmd {
 	if r.client != nil {
 		return r.client.ZAddGT(ctx, key, members...)
 	}
@@ -32,7 +32,7 @@ func (r *RedisClient) ZAddGT(ctx context.Context, key string, members ...redis.Z
 }
 
 // ZAddNX 仅当成员不存在时添加
-func (r *RedisClient) ZAddNX(ctx context.Context, key string, members ...redis.Z) *redis.IntCmd {
+func (r *RedisClient) ZAddNX(ctx context.Context, key string, members ...Z) *redis.IntCmd {
 	if r.client != nil {
 		return r.client.ZAddNX(ctx, key, members...)
 	}
@@ -40,7 +40,7 @@ func (r *RedisClient) ZAddNX(ctx context.Context, key string, members ...redis.Z
 }
 
 // ZAddXX 仅当成员已存在时更新
-func (r *RedisClient) ZAddXX(ctx context.Context, key string, members ...redis.Z) *redis.IntCmd {
+func (r *RedisClient) ZAddXX(ctx context.Context, key string, members ...Z) *redis.IntCmd {
 	if r.client != nil {
 		return r.client.ZAddXX(ctx, key, members...)
 	}
@@ -168,7 +168,7 @@ func (r *RedisClient) ZRevRangeWithScores(ctx context.Context, key string, start
 }
 
 // ZRangeByScore 按分数范围查询成员
-func (r *RedisClient) ZRangeByScore(ctx context.Context, key string, opt *redis.ZRangeBy) *redis.StringSliceCmd {
+func (r *RedisClient) ZRangeByScore(ctx context.Context, key string, opt *ZRangeBy) *redis.StringSliceCmd {
 	if r.client != nil {
 		return r.client.ZRangeByScore(ctx, key, opt)
 	}
@@ -176,7 +176,7 @@ func (r *RedisClient) ZRangeByScore(ctx context.Context, key string, opt *redis.
 }
 
 // ZRevRangeByScoreWithScores 按分数范围逆序查询成员（含分数）
-func (r *RedisClient) ZRevRangeByScoreWithScores(ctx context.Context, key string, opt *redis.ZRangeBy) *redis.ZSliceCmd {
+func (r *RedisClient) ZRevRangeByScoreWithScores(ctx context.Context, key string, opt *ZRangeBy) *redis.ZSliceCmd {
 	if r.client != nil {
 		return r.client.ZRevRangeByScoreWithScores(ctx, key, opt)
 	}
@@ -216,7 +216,7 @@ func (r *RedisClient) BZPopMin(ctx context.Context, timeout time.Duration, keys 
 }
 
 // ZInter 有序集合交集
-func (r *RedisClient) ZInter(ctx context.Context, store *redis.ZStore) *redis.StringSliceCmd {
+func (r *RedisClient) ZInter(ctx context.Context, store *ZStore) *redis.StringSliceCmd {
 	if r.client != nil {
 		return r.client.ZInter(ctx, store)
 	}
@@ -224,7 +224,7 @@ func (r *RedisClient) ZInter(ctx context.Context, store *redis.ZStore) *redis.St
 }
 
 // ZInterWithScores 有序集合交集（含分数）
-func (r *RedisClient) ZInterWithScores(ctx context.Context, store *redis.ZStore) *redis.ZSliceCmd {
+func (r *RedisClient) ZInterWithScores(ctx context.Context, store *ZStore) *redis.ZSliceCmd {
 	if r.client != nil {
 		return r.client.ZInterWithScores(ctx, store)
 	}
@@ -232,7 +232,7 @@ func (r *RedisClient) ZInterWithScores(ctx context.Context, store *redis.ZStore)
 }
 
 // ZInterStore 有序集合交集并存储
-func (r *RedisClient) ZInterStore(ctx context.Context, destination string, store *redis.ZStore) *redis.IntCmd {
+func (r *RedisClient) ZInterStore(ctx context.Context, destination string, store *ZStore) *redis.IntCmd {
 	if r.client != nil {
 		return r.client.ZInterStore(ctx, destination, store)
 	}
@@ -240,7 +240,7 @@ func (r *RedisClient) ZInterStore(ctx context.Context, destination string, store
 }
 
 // ZUnion 有序集合并集
-func (r *RedisClient) ZUnion(ctx context.Context, store redis.ZStore) *redis.StringSliceCmd {
+func (r *RedisClient) ZUnion(ctx context.Context, store ZStore) *redis.StringSliceCmd {
 	if r.client != nil {
 		return r.client.ZUnion(ctx, store)
 	}
@@ -248,7 +248,7 @@ func (r *RedisClient) ZUnion(ctx context.Context, store redis.ZStore) *redis.Str
 }
 
 // ZUnionWithScores 有序集合并集（含分数）
-func (r *RedisClient) ZUnionWithScores(ctx context.Context, store redis.ZStore) *redis.ZSliceCmd {
+func (r *RedisClient) ZUnionWithScores(ctx context.Context, store ZStore) *redis.ZSliceCmd {
 	if r.client != nil {
 		return r.client.ZUnionWithScores(ctx, store)
 	}
@@ -256,7 +256,7 @@ func (r *RedisClient) ZUnionWithScores(ctx context.Context, store redis.ZStore) 
 }
 
 // ZUnionStore 有序集合并集并存储
-func (r *RedisClient) ZUnionStore(ctx context.Context, dest string, store *redis.ZStore) *redis.IntCmd {
+func (r *RedisClient) ZUnionStore(ctx context.Context, dest string, store *ZStore) *redis.IntCmd {
 	if r.client != nil {
 		return r.client.ZUnionStore(ctx, dest, store)
 	}
@@ -320,7 +320,7 @@ func (r *RedisClient) BZMPop(ctx context.Context, timeout time.Duration, order s
 }
 
 // ZAddArgs 添加有序集合成员（带完整参数）
-func (r *RedisClient) ZAddArgs(ctx context.Context, key string, args redis.ZAddArgs) *redis.IntCmd {
+func (r *RedisClient) ZAddArgs(ctx context.Context, key string, args ZAddArgs) *redis.IntCmd {
 	if r.client != nil {
 		return r.client.ZAddArgs(ctx, key, args)
 	}
@@ -328,7 +328,7 @@ func (r *RedisClient) ZAddArgs(ctx context.Context, key string, args redis.ZAddA
 }
 
 // ZAddArgsIncr 添加有序集合成员（带参数和增量）
-func (r *RedisClient) ZAddArgsIncr(ctx context.Context, key string, args redis.ZAddArgs) *redis.FloatCmd {
+func (r *RedisClient) ZAddArgsIncr(ctx context.Context, key string, args ZAddArgs) *redis.FloatCmd {
 	if r.client != nil {
 		return r.client.ZAddArgsIncr(ctx, key, args)
 	}
@@ -360,7 +360,7 @@ func (r *RedisClient) ZMPop(ctx context.Context, order string, count int64, keys
 }
 
 // ZRangeArgs 按复杂参数范围获取成员
-func (r *RedisClient) ZRangeArgs(ctx context.Context, z redis.ZRangeArgs) *redis.StringSliceCmd {
+func (r *RedisClient) ZRangeArgs(ctx context.Context, z ZRangeArgs) *redis.StringSliceCmd {
 	if r.client != nil {
 		return r.client.ZRangeArgs(ctx, z)
 	}
@@ -368,7 +368,7 @@ func (r *RedisClient) ZRangeArgs(ctx context.Context, z redis.ZRangeArgs) *redis
 }
 
 // ZRangeArgsWithScores 按复杂参数范围获取成员（带分数）
-func (r *RedisClient) ZRangeArgsWithScores(ctx context.Context, z redis.ZRangeArgs) *redis.ZSliceCmd {
+func (r *RedisClient) ZRangeArgsWithScores(ctx context.Context, z ZRangeArgs) *redis.ZSliceCmd {
 	if r.client != nil {
 		return r.client.ZRangeArgsWithScores(ctx, z)
 	}
@@ -376,7 +376,7 @@ func (r *RedisClient) ZRangeArgsWithScores(ctx context.Context, z redis.ZRangeAr
 }
 
 // ZRangeByLex 按字典序范围获取成员
-func (r *RedisClient) ZRangeByLex(ctx context.Context, key string, opt *redis.ZRangeBy) *redis.StringSliceCmd {
+func (r *RedisClient) ZRangeByLex(ctx context.Context, key string, opt *ZRangeBy) *redis.StringSliceCmd {
 	if r.client != nil {
 		return r.client.ZRangeByLex(ctx, key, opt)
 	}
@@ -384,7 +384,7 @@ func (r *RedisClient) ZRangeByLex(ctx context.Context, key string, opt *redis.ZR
 }
 
 // ZRangeByScoreWithScores 按分数范围获取成员（带分数）
-func (r *RedisClient) ZRangeByScoreWithScores(ctx context.Context, key string, opt *redis.ZRangeBy) *redis.ZSliceCmd {
+func (r *RedisClient) ZRangeByScoreWithScores(ctx context.Context, key string, opt *ZRangeBy) *redis.ZSliceCmd {
 	if r.client != nil {
 		return r.client.ZRangeByScoreWithScores(ctx, key, opt)
 	}
@@ -392,7 +392,7 @@ func (r *RedisClient) ZRangeByScoreWithScores(ctx context.Context, key string, o
 }
 
 // ZRangeStore 按复杂参数范围获取成员并存储
-func (r *RedisClient) ZRangeStore(ctx context.Context, dst string, z redis.ZRangeArgs) *redis.IntCmd {
+func (r *RedisClient) ZRangeStore(ctx context.Context, dst string, z ZRangeArgs) *redis.IntCmd {
 	if r.client != nil {
 		return r.client.ZRangeStore(ctx, dst, z)
 	}
@@ -408,7 +408,7 @@ func (r *RedisClient) ZRankWithScore(ctx context.Context, key, member string) *r
 }
 
 // ZRevRangeByLex 按字典序反向获取成员
-func (r *RedisClient) ZRevRangeByLex(ctx context.Context, key string, opt *redis.ZRangeBy) *redis.StringSliceCmd {
+func (r *RedisClient) ZRevRangeByLex(ctx context.Context, key string, opt *ZRangeBy) *redis.StringSliceCmd {
 	if r.client != nil {
 		return r.client.ZRevRangeByLex(ctx, key, opt)
 	}
@@ -416,7 +416,7 @@ func (r *RedisClient) ZRevRangeByLex(ctx context.Context, key string, opt *redis
 }
 
 // ZRevRangeByScore 按分数反向获取成员
-func (r *RedisClient) ZRevRangeByScore(ctx context.Context, key string, opt *redis.ZRangeBy) *redis.StringSliceCmd {
+func (r *RedisClient) ZRevRangeByScore(ctx context.Context, key string, opt *ZRangeBy) *redis.StringSliceCmd {
 	if r.client != nil {
 		return r.client.ZRevRangeByScore(ctx, key, opt)
 	}

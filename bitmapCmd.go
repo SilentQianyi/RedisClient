@@ -23,7 +23,7 @@ func (r *RedisClient) GetBit(ctx context.Context, key string, offset int64) *red
 }
 
 // BitCount 统计位数
-func (r *RedisClient) BitCount(ctx context.Context, key string, bitCount *redis.BitCount) *redis.IntCmd {
+func (r *RedisClient) BitCount(ctx context.Context, key string, bitCount *BitCount) *redis.IntCmd {
 	if r.client != nil {
 		return r.client.BitCount(ctx, key, bitCount)
 	}

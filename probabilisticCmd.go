@@ -91,7 +91,7 @@ func (r *RedisClient) BFInfoExpansion(ctx context.Context, key string) *redis.BF
 }
 
 // BFInsert 向 Bloom Filter 插入多个元素
-func (r *RedisClient) BFInsert(ctx context.Context, key string, options *redis.BFInsertOptions, elements ...interface{}) *redis.BoolSliceCmd {
+func (r *RedisClient) BFInsert(ctx context.Context, key string, options *BFInsertOptions, elements ...interface{}) *redis.BoolSliceCmd {
 	if r.client != nil {
 		return r.client.BFInsert(ctx, key, options, elements...)
 	}
@@ -139,7 +139,7 @@ func (r *RedisClient) BFReserveNonScaling(ctx context.Context, key string, error
 }
 
 // BFReserveWithArgs 创建 Bloom Filter（带完整参数）
-func (r *RedisClient) BFReserveWithArgs(ctx context.Context, key string, options *redis.BFReserveOptions) *redis.StatusCmd {
+func (r *RedisClient) BFReserveWithArgs(ctx context.Context, key string, options *BFReserveOptions) *redis.StatusCmd {
 	if r.client != nil {
 		return r.client.BFReserveWithArgs(ctx, key, options)
 	}
@@ -215,7 +215,7 @@ func (r *RedisClient) CFInfo(ctx context.Context, key string) *redis.CFInfoCmd {
 }
 
 // CFInsert 向 Cuckoo Filter 插入多个元素
-func (r *RedisClient) CFInsert(ctx context.Context, key string, options *redis.CFInsertOptions, elements ...interface{}) *redis.BoolSliceCmd {
+func (r *RedisClient) CFInsert(ctx context.Context, key string, options *CFInsertOptions, elements ...interface{}) *redis.BoolSliceCmd {
 	if r.client != nil {
 		return r.client.CFInsert(ctx, key, options, elements...)
 	}
@@ -223,7 +223,7 @@ func (r *RedisClient) CFInsert(ctx context.Context, key string, options *redis.C
 }
 
 // CFInsertNX 向 Cuckoo Filter 插入多个元素（不存在时）
-func (r *RedisClient) CFInsertNX(ctx context.Context, key string, options *redis.CFInsertOptions, elements ...interface{}) *redis.IntSliceCmd {
+func (r *RedisClient) CFInsertNX(ctx context.Context, key string, options *CFInsertOptions, elements ...interface{}) *redis.IntSliceCmd {
 	if r.client != nil {
 		return r.client.CFInsertNX(ctx, key, options, elements...)
 	}
@@ -247,7 +247,7 @@ func (r *RedisClient) CFReserve(ctx context.Context, key string, capacity int64)
 }
 
 // CFReserveWithArgs 创建 Cuckoo Filter（带完整参数）
-func (r *RedisClient) CFReserveWithArgs(ctx context.Context, key string, options *redis.CFReserveOptions) *redis.StatusCmd {
+func (r *RedisClient) CFReserveWithArgs(ctx context.Context, key string, options *CFReserveOptions) *redis.StatusCmd {
 	if r.client != nil {
 		return r.client.CFReserveWithArgs(ctx, key, options)
 	}
@@ -507,7 +507,7 @@ func (r *RedisClient) TDigestMin(ctx context.Context, key string) *redis.FloatCm
 }
 
 // TDigestMerge 合并 T-Digest
-func (r *RedisClient) TDigestMerge(ctx context.Context, destKey string, options *redis.TDigestMergeOptions, sourceKeys ...string) *redis.StatusCmd {
+func (r *RedisClient) TDigestMerge(ctx context.Context, destKey string, options *TDigestMergeOptions, sourceKeys ...string) *redis.StatusCmd {
 	if r.client != nil {
 		return r.client.TDigestMerge(ctx, destKey, options, sourceKeys...)
 	}

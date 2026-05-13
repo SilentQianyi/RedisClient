@@ -284,7 +284,7 @@ func (r *RedisClient) MemoryUsage(ctx context.Context, key string, samples ...in
 }
 
 // CommandList 获取命令列表
-func (r *RedisClient) CommandList(ctx context.Context, filter *redis.FilterBy) *redis.StringSliceCmd {
+func (r *RedisClient) CommandList(ctx context.Context, filter *FilterBy) *redis.StringSliceCmd {
 	if r.client != nil {
 		return r.client.CommandList(ctx, filter)
 	}
@@ -332,7 +332,7 @@ func (r *RedisClient) DebugObject(ctx context.Context, key string) *redis.String
 }
 
 // ModuleLoadex 加载模块
-func (r *RedisClient) ModuleLoadex(ctx context.Context, conf *redis.ModuleLoadexConfig) *redis.StringCmd {
+func (r *RedisClient) ModuleLoadex(ctx context.Context, conf *ModuleLoadexConfig) *redis.StringCmd {
 	if r.client != nil {
 		return r.client.ModuleLoadex(ctx, conf)
 	}

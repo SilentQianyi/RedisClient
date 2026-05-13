@@ -208,7 +208,7 @@ func (r *RedisClient) LTrim(ctx context.Context, key string, start, stop int64) 
 }
 
 // LPos 查找元素位置
-func (r *RedisClient) LPos(ctx context.Context, key string, value string, args redis.LPosArgs) *redis.IntCmd {
+func (r *RedisClient) LPos(ctx context.Context, key string, value string, args LPosArgs) *redis.IntCmd {
 	if r.client != nil {
 		return r.client.LPos(ctx, key, value, args)
 	}
@@ -216,7 +216,7 @@ func (r *RedisClient) LPos(ctx context.Context, key string, value string, args r
 }
 
 // LPosCount 查找元素所有位置
-func (r *RedisClient) LPosCount(ctx context.Context, key string, value string, count int64, args redis.LPosArgs) *redis.IntSliceCmd {
+func (r *RedisClient) LPosCount(ctx context.Context, key string, value string, count int64, args LPosArgs) *redis.IntSliceCmd {
 	if r.client != nil {
 		return r.client.LPosCount(ctx, key, value, count, args)
 	}

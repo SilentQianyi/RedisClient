@@ -119,7 +119,7 @@ func (r *RedisClient) FunctionFlushAsync(ctx context.Context) *redis.StringCmd {
 }
 
 // FunctionList 列出函数库
-func (r *RedisClient) FunctionList(ctx context.Context, q redis.FunctionListQuery) *redis.FunctionListCmd {
+func (r *RedisClient) FunctionList(ctx context.Context, q FunctionListQuery) *redis.FunctionListCmd {
 	if r.client != nil {
 		return r.client.FunctionList(ctx, q)
 	}
