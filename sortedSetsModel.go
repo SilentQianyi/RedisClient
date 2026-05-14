@@ -11,3 +11,7 @@ type ZStore = redis.ZStore
 type ZAddArgs = redis.ZAddArgs
 
 type ZRangeArgs = redis.ZRangeArgs
+
+type ZWithKey = redis.ZWithKey
+
+type RankScore = redis.RankScore

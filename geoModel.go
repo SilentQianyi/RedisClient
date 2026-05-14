@@ -11,3 +11,5 @@ type GeoSearchQuery = redis.GeoSearchQuery
 type GeoSearchLocationQuery = redis.GeoSearchLocationQuery
 
 type GeoSearchStoreQuery = redis.GeoSearchStoreQuery
+
+type GeoPos = redis.GeoPos
