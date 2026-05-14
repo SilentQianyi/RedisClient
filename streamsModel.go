@@ -13,3 +13,5 @@ type XClaimArgs = redis.XClaimArgs
 type XAutoClaimArgs = redis.XAutoClaimArgs
 
 type XPendingExtArgs = redis.XPendingExtArgs
+
+type XPending = redis.XPending
